@@ -11,6 +11,9 @@ class ChatManager {
   final types.User bot = const types.User(id: 'model', firstName: 'Gemini');
   bool isLoading = false;
   late WebSocketChannel channel;
+
+
+
   void initializeWebSocket() async {
     try {
       channel =  IOWebSocketChannel.connect('ws://echoes-ai.onrender.com/ws');
@@ -30,7 +33,7 @@ class ChatManager {
     messages.insert(0, message);
     isLoading = true;
     if (message is types.TextMessage) {
-      channel.sink.add(message.text);
+      // channel.sink.add(message.text);
       messages.insert(
         0,
         types.TextMessage(
