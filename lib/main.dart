@@ -11,27 +11,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Gemfi',
-      theme:ThemeData(
-        
-       fontFamily: 'outfit',
-      primaryColor: AppColors.primaryColor,
-      primaryColorDark: AppColors.primaryColor,
-    
-        appBarTheme:AppBarTheme(
-          backgroundColor: AppColors.appBarColor1,
-          elevation: 0
-        ) ,
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor
-      ),
+      theme: ThemeData(
+          fontFamily: 'outfit',
+          primaryColor: AppColors.primaryColor,
+          primaryColorDark: AppColors.primaryColor,
+          appBarTheme: AppBarTheme(
+              backgroundColor: AppColors.appBarColor1, elevation: 0),
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
