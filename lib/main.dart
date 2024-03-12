@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gemini_chat/resources/app_colors.dart';
-import 'package:gemini_chat/views/chat_page.dart';
-import 'package:gemini_chat/views/home_screen.dart';
 import 'package:gemini_chat/views/splash_screen.dart';
 
 void main() {
