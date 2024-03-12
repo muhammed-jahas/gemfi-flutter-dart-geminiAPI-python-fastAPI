@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart';
 import 'package:gemini_chat/resources/app_colors.dart';
 import 'package:gemini_chat/views/chat_page.dart';
 
@@ -15,8 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // gotoCreatePromptScreen();
     super.initState();
-    
   }
+
   TextEditingController message = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -77,7 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ChatPage(
+                        message: '',
+                      ),
+                    ));
+                  },
                   icon: Icon(Icons.image),
                 ),
                 Expanded(
@@ -113,31 +118,27 @@ class _HomeScreenState extends State<HomeScreen> {
     await Future.delayed(Duration(seconds: 2));
     // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const CreatePromptScreen(),));
   }
-  
-   void sendMessage(String message1) async {
-  if (message1.isEmpty) {
-    print('Message is Empty');
-  } else {
-    final result = await Navigator.of(context).push(
-      PageRouteBuilder(
-        pageBuilder: (_, __, ___) => ChatPage(message: message1),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(
-            opacity: animation,
-            child: child,
-          );
-        },
-      ),
-    );
-    
-    // Clear the input field when returning from ChatPage
-    message.clear();
+
+  void sendMessage(String message1) async {
+    if (message1.isEmpty) {
+      print('Message is Empty');
+    } else {
+      final result = await Navigator.of(context).push(
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => ChatPage(message: message1),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        ),
+      );
+
+      // Clear the input field when returning from ChatPage
+      message.clear();
+    }
   }
-}
-
-
- 
-   
 }
 
 class HomeDefaultCard extends StatelessWidget {
@@ -152,16 +153,17 @@ class HomeDefaultCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
-      PageRouteBuilder(
-        pageBuilder: (_, __, ___) => ChatPage(message: info),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(
-            opacity: animation,
-            child: child,
-          );
-        },
-      ),
-    );
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => ChatPage(message: info),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                opacity: animation,
+                child: child,
+              );
+            },
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),

@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutter_chat_types/flutter_chat_types.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:gemini_chat/resources/app_colors.dart';
 import 'package:gemini_chat/utils/chat_manager.dart';
@@ -82,7 +81,7 @@ class _ChatPageState extends State<ChatPage> {
       ),
       body: Chat(
         messages: chatManager.messages,
-        onAttachmentPressed: () => _showImageSelectionDialog(context),
+        onAttachmentPressed: () => showImageSelectionDialog(context),
         onSendPressed: _handleSendPressed,
         
         showUserAvatars: false,
@@ -112,7 +111,7 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  _showImageSelectionDialog(BuildContext context) async {
+  showImageSelectionDialog(BuildContext context) async {
   final TextEditingController textController = TextEditingController();
   final ImagePicker picker = ImagePicker();
   XFile? selectedImage;
